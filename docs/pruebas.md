@@ -66,6 +66,28 @@
 
 Status values: **Passed**, **Failed**, **Blocked**, **N/A**. A blocked case does not count as executed.
 
+### Execution assignment
+
+The PR author ran the cases on his phone. The remaining cases are executed by the other team
+members **from Git**: each one checks out `feature/aleks-syntek-fighter`, builds it, runs the
+assigned case and records the result in the PR review (see the review instructions in the PR
+description). Results are copied here with the reviewer's name, date and tested SHA.
+
+| Case | Executor | Status |
+|---|---|---|
+| TC-01 | Jorge López Ávila (PR author) | Executed |
+| TC-02 (observed inputs) | Jorge López Ávila | Executed (partial) |
+| TC-02 (additional inputs) | _Teammate (@user)_ | Executed (partial) — video `TC-02_ataques_adicionales.mp4` |
+| TC-03 step 1 | Jorge López Ávila | Executed |
+| TC-03 step 2 (loss) | _Teammate (@user)_ | Executed — videos `TC-03_derrota_ronda.mp4`, `TC-02_ataques_adicionales.mp4` |
+| TC-03 step 3 (CPU Aleks wins) | _Teammate (@user)_ | Not executed |
+| TC-04 Regression | _Teammate 2 (@user)_ | Assigned |
+| TC-05 Navigation / lifecycle | _Teammate (@user)_ | Executed (step 2) — video `TC-05_pausa_segundo_plano.mp4` |
+| TC-06 Accessibility | _Teammate 3 (@user)_ | Assigned |
+| TC-07 Compatibility / low-end | _Teammate 3 (@user)_ | Assigned |
+| TC-08 local unit tests | Jorge López Ávila | Executed |
+| TC-08 CI checks | GitHub Actions (PR Quality Gate) | Runs when the PR is opened |
+
 ### TC-01 — Happy path: select and fight (AC-1)
 
 | Field | Value |
@@ -91,6 +113,8 @@ Status values: **Passed**, **Failed**, **Blocked**, **N/A**. A blocked case does
 | Status | **Passed — partial coverage**. Not yet shown: neutral/forward/back kick variants, crouch attacks, sweep, overhead, long kick, grab (R1), parry (L1). Logcat not captured. |
 | Evidence | [TC-01_TC-02_partida_aleks.mp4](evidencias/TC-01_TC-02_partida_aleks.mp4) |
 | Defect / decision | No crash observed. Complete the missing inputs and attach a Logcat excerpt to close the case. |
+| Additional run (teammate, 2026-09-30, same phone) | Second 26 s round against Paramédico Cruz Roja: Aleks crouches, lands a high kick, does a forward flip jump and a flying kick, punches at close range, is stunned (stars) and is finally knocked out. HUD combo counters appear ("2 GOLPES", "3 GOLPES"). No crash or freeze. Evidence: [TC-02_ataques_adicionales.mp4](evidencias/TC-02_ataques_adicionales.mp4) |
+| Status after both runs | **Passed — partial coverage.** Still not shown on video: sweep, overhead, long kick, grab (R1) and parry (L1); no Logcat excerpt. |
 
 ### TC-03 — Victory audio only on win (AC-3)
 
@@ -99,9 +123,9 @@ Status values: **Passed**, **Failed**, **Blocked**, **N/A**. A blocked case does
 | Preconditions | Media volume on. Match with Aleks against CPU on BASICA/Fácil. |
 | Steps | 1. Win the match with Aleks. 2. Start a new match and **lose** on purpose. 3. Start a match where Aleks is the **CPU** and let him win. |
 | Expected | Step 1 and 3: the new victory clip plays once at the end. Step 2: the clip does **not** play. |
-| Actual result | Step 1: when Aleks wins round 1 ("SYNTEK WINS" on screen, he does his mic pose) the new victory clip is heard, then round 2 starts normally. Observation: the clip plays on each **round** win, not only at the end of the match — this is how the engine handles win voices for every fighter (`emitWinVoice`), not something introduced by this change. Steps 2 and 3 not executed yet. |
-| Status | Step 1 **Passed**; overall **Pending** (steps 2 and 3). |
-| Evidence | [TC-03_audio_victoria.mp4](evidencias/TC-03_audio_victoria.mp4) |
+| Actual result | Step 1: when Aleks wins round 1 ("SYNTEK WINS" on screen, he does his mic pose) the new victory clip is heard, then round 2 starts normally. Observation: the clip plays on each **round** win, not only at the end of the match — this is how the engine handles win voices for every fighter (`emitWinVoice`), not something introduced by this change. Step 2: in two rounds that Aleks **loses** ("PARAMED CR WINS", Aleks on the floor) the victory clip is **not** heard; the next round starts normally. Verified by an audio cross-correlation of each video against `special_aleks_syntek_win.m4a` (normalized correlation 0.60 in the win video vs. ≤ 0.06 in both loss videos). Step 3 (Aleks as CPU) not executed. |
+| Status | Steps 1 and 2 **Passed**; step 3 **Not executed**. AC-3 is covered for the player-controlled fighter. |
+| Evidence | Win: [TC-03_audio_victoria.mp4](evidencias/TC-03_audio_victoria.mp4) · Loss: [TC-03_derrota_ronda.mp4](evidencias/TC-03_derrota_ronda.mp4), [TC-02_ataques_adicionales.mp4](evidencias/TC-02_ataques_adicionales.mp4) (end of the video) |
 
 ### TC-04 — Regression: other fighters and arcade ladder (AC-4, R-3)
 
@@ -119,9 +143,9 @@ Status values: **Passed**, **Failed**, **Blocked**, **N/A**. A blocked case does
 |---|---|
 | Steps | 1. In the character select with Aleks highlighted, press **Back** → returns to the previous menu; re-enter. 2. Start a match, press **Home** mid-fight, wait 10 s, return. 3. Repeat step 2 after enabling *Don't keep activities* in Developer options. 4. Update-path: install the **base SHA** build, unlock nothing, then install the **branch** build over it (no uninstall) and open the select screen. |
 | Expected | 1: no crash, selection screen restored. 2–3: the fight resumes or the game shows its pause/resume flow without losing Aleks' sprites. 4: Aleks appears unlocked for an existing save and the previous unlocks are kept. Orientation is fixed to landscape — record it as expected behavior. |
-| Actual result | |
-| Status | |
-| Evidence | |
+| Actual result | Step 2: mid-fight with Aleks, the game shows the **PAUSA** screen, the user opens the recent-apps switcher (the POW card and another app are visible) and comes back: the fight is still paused on the same frame with *Continuar*, Aleks' sprites and both life bars intact. No crash, no restart. Steps 1, 3 and 4 not executed. The game stays in landscape; only the system app switcher is shown in portrait. |
+| Status | Step 2 **Passed**; steps 1, 3 and 4 **Not executed** → case **Passed — partial**. |
+| Evidence | [TC-05_pausa_segundo_plano.mp4](evidencias/TC-05_pausa_segundo_plano.mp4) |
 
 ### TC-06 — Accessibility
 
