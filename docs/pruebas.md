@@ -207,21 +207,17 @@ unlocked keep the string `ALEKS_SYNTEK` in their unlock set, which is ignored by
 `SfFighterId.valueOf` parsing (`runCatching`) if the enum entry is removed.
 
 
-https://github.com/user-attachments/assets/8333d34e-520f-4374-8481-24e8e67fcbc8
+
+
+https://github.com/user-attachments/assets/ea002f08-a208-4e46-a9ad-69e379c22fd7
 
 
 
-https://github.com/user-attachments/assets/56619bd3-45fb-4465-8114-7c3aebecd82c
+https://github.com/user-attachments/assets/0ae1f2b2-3d86-4071-bb3f-09e88276dc8c
 
 
 
-https://github.com/user-attachments/assets/1f1210fe-86a2-4115-9b56-3471e68b076d
+https://github.com/user-attachments/assets/af925c72-da7b-4d17-8314-6828a359ba8d
 
-
-
-https://github.com/user-attachments/assets/8270f9ee-0456-4a1e-8a59-ec96eeb043c1
-
-
-
-https://github.com/user-attachments/assets/c41c67ed-a1f7-4ca6-af80-96e7cd24fe78
+<img width="1600" height="720" alt="image" src="https://github.com/user-attachments/assets/55472df5-06df-4648-a693-143e1064a9a0" />
 
