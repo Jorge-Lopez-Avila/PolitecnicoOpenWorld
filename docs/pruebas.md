@@ -209,10 +209,6 @@ unlocked keep the string `ALEKS_SYNTEK` in their unlock set, which is ignored by
 
 
 
-https://github.com/user-attachments/assets/ea002f08-a208-4e46-a9ad-69e379c22fd7
-
-
-
 https://github.com/user-attachments/assets/0ae1f2b2-3d86-4071-bb3f-09e88276dc8c
 
 
