@@ -205,3 +205,23 @@ risks remain (at least R-4 and R-5)._
 **Rollback:** revert the PR commits; no data migration is needed. Players who already had Aleks
 unlocked keep the string `ALEKS_SYNTEK` in their unlock set, which is ignored by
 `SfFighterId.valueOf` parsing (`runCatching`) if the enum entry is removed.
+
+
+https://github.com/user-attachments/assets/8333d34e-520f-4374-8481-24e8e67fcbc8
+
+
+
+https://github.com/user-attachments/assets/56619bd3-45fb-4465-8114-7c3aebecd82c
+
+
+
+https://github.com/user-attachments/assets/1f1210fe-86a2-4115-9b56-3471e68b076d
+
+
+
+https://github.com/user-attachments/assets/8270f9ee-0456-4a1e-8a59-ec96eeb043c1
+
+
+
+https://github.com/user-attachments/assets/c41c67ed-a1f7-4ca6-af80-96e7cd24fe78
+
