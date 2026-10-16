@@ -44,7 +44,7 @@ object SfArcadeLadder {
         SfFighterId.CHARRO_NEGRO, SfFighterId.LA_LLORONA, SfFighterId.LA_TZITZIMIME,
         SfFighterId.YOALLI_EHECATL, SfFighterId.LA_PRESIDENTA,
         // 🆕 (2026-09-30) Invitado: desbloqueado de arranque (no es rival de la escalera).
-        SfFighterId.ALEKS_SYNTEK,
+        SfFighterId.ALEXIS_SYNTAXIS,
     )
 
     /** Un escalón: rival, mapa (null = conservar el anterior), si es jefe y si es el FINAL. */

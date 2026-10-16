@@ -102,7 +102,7 @@ object SfStageCatalog {
         SfFighterId.YOALLI_EHECATL -> MICTLÁN
         SfFighterId.LA_PRESIDENTA -> ZOCALO // comparte con Granadero H
         // ── Invitados ──
-        SfFighterId.ALEKS_SYNTEK -> UNAM_CU
+        SfFighterId.ALEXIS_SYNTAXIS -> UNAM_CU
         // ── Alpha / no arcade (solo Dev) ──
         SfFighterId.LAZARO -> ESCOM
         SfFighterId.GRANADERO -> ZOCALO

@@ -262,12 +262,11 @@ enum class SfFighterId(
         "Paramédico", "PARAMEDICO", "STREETFIGHTER/DATA/sf_template.json", "RUNTIME/Paramedico.png",
         isAlpha = true, sharedSet = SfSharedSet("SPRITES/NPC/", "Paramedico/", "pmd_"),
     ),
-    // 🆕 (2026-09-30) Aleks Syntek: hoja 2560x6656 (celdas 256², pies en 128,224) armada con
-    // las 13 poses del sprite sheet del dueño (salto, agachado, daño, derribo). Antes apuntaba
-    // al PNG crudo de 1024x683 y los frames de ataque caían FUERA del bitmap → crash al golpear.
-    ALEKS_SYNTEK(
-        "Aleks Syntek", "SYNTEK",
-        "STREETFIGHTER/DATA/aleks_syntek.json", "STREETFIGHTER/IMAGES/AleksSyntek.webp",
+    // 🆕 (2026-09-30) Alexis Syntaxis: hoja dedicada 2560x6656 (celdas 256², pies en 128,224)
+    // con la misma estructura de frames que escomboy.json.
+    ALEXIS_SYNTAXIS(
+        "Alexis Syntaxis", "SYNTAXIS",
+        "STREETFIGHTER/DATA/alexis_syntaxis.json", "STREETFIGHTER/IMAGES/AlexisSyntaxis.webp",
     ),
 }
 
